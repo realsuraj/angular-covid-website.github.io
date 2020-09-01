@@ -1,0 +1,8 @@
+@media (max-width: 925px) {
+	section {
+		height: auto !important;
+	}
+	div {
+		height: auto !important;
+	}
+}
