@@ -4,41 +4,132 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Covid Shower</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
   </head>
-  <body ng-app="MyCovidApp" ng-controller="MyCtrl">
-    <div class="container">
-      <div class="jumbotron py-3">
-        <h1 class="text-center">{{title}}</h1>
-        <p class="pt-3">
-          Coronavirus disease (COVID-19) is an infectious disease caused by a
-          newly discovered coronavirus. Most people infected with the COVID-19
-          virus will experience mild to moderate respiratory illness and recover
-          without requiring special treatment. Older people, and those with
-          underlying medical problems like cardiovascular disease, diabetes,
-          chronic respiratory disease, and cancer are more likely to develop
-          serious illness. The best way to prevent and slow down transmission is
-          be well informed about the COVID-19 virus, the disease it causes and
-          how it spreads. Protect yourself and others from infection by washing
-          your hands or using an alcohol based rub frequently and not touching
-          your face. The COVID-19 virus spreads primarily through droplets of
-          saliva or discharge from the nose when an infected person coughs or
-          sneezes, so it’s important that you also practice respiratory
-          etiquette (for example, by coughing into a flexed elbow). At this
-          time, there are no specific vaccines or treatments for COVID-19.
-          However, there are many ongoing clinical trials evaluating potential
-          treatments. WHO will continue to provide updated information as soon
-          as clinical findings become available.
-        </p>
+  <body ng-app="MyCovidApp" ng-controller="MyCtrl" style="overflow-x: hidden;">
+    <!-- nav bar -->
+    <section>
+      <nav
+        class="navbar navbar-expand-lg navbar-dark bg-dark"
+        style="background: rgb(176, 116, 233) !important"
+      >
+        <a class="navbar-brand" href="#">COVID-19</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <!-- all data -->
-        <div class="row text-center text-white">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">About</a>
+            </li>
+
+            <li class="nav-item">  
+              <a
+                class="nav-link text-white"
+                href="#"
+                tabindex="-1"
+                aria-disabled="true"
+                >Symptoms</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link text-white"
+                href="#"
+                tabindex="-1"
+                aria-disabled="true"
+                >Prevention</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link text-white"
+                href="#"
+                tabindex="-1"
+                aria-disabled="true"
+                >Contact</a
+              >
+              
+
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search for country" aria-label="Search"  ng-model="c" ng-change="get_country_data()"
+            >
+            <button class="btn btn-outline-success bg-success text-white my-2 my-sm-0" type="submit" >Search</button>
+          </form>
+        </div>
+      </nav>
+    </section>
+
+    <!-- nav bar end  -->
+    <!-- home page  -->
+
+    <section style="height: 60vh">
+      <div class="row mt-5">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <img
+            src="./images/unity.png"
+            class="rounded mx-auto d-block"
+            alt=""
+          />
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 mt-5">
+          <h1 class=" mt-5">
+            Let's Stay Safe & Fight Together Against Cor <span> <img src="./images/corona virus for p.webp" alt="" style="height: 60px; width: 60px;"></span> na Virus
+          </h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-1">
+      <h1 class="text-uppercase text-center text-danger"> covid-19 updates</h1>
+      <div class="row px-auto">
+        <div class="col-lg-4 col-md-4 col-sm-12  text-center">
+          <h3>  {{allData.confirmed.value}}</h3>
+          <p>this is Confirmed Cases</p>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+          <h3> {{allData.recovered.value}}</h3>
+          <p>this is Recovered Cases</p>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+          <h3> {{allData.deaths.value}}</h3>
+          <p>this is Death Cases</p>
+      </div>
+      
+      <!-- country wise check  -->
+
+      <div class="container-fluid" ng-if="countryData">
+        <h1 class="text-center mt-4 text-uppercase">{{c}} status</h1>
+        <div class="row text-center text-white mt-4">
           <div class="col-md-4">
             <div class="card bg-warning mt-4">
               <div class="card-body">
                 <h3>Confirmed Cases</h3>
-                <h3>{{allData.confirmed.value}}</h3>
+                <h3>{{countryData.confirmed.value}}</h3>
               </div>
             </div>
           </div>
@@ -46,7 +137,7 @@
             <div class="card bg-success mt-4">
               <div class="card-body">
                 <h3>Recovered Cases</h3>
-                <h3>{{allData.recovered.value}}</h3>
+                <h3>{{countryData.recovered.value}}</h3>
               </div>
             </div>
           </div>
@@ -54,56 +145,181 @@
             <div class="card bg-danger mt-4">
               <div class="card-body">
                 <h3>Death Cases</h3>
-                <h3>{{allData.deaths.value}}</h3>
+                <h3>{{countryData.deaths.value}}</h3>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- End all data -->
-
-        <input
-          type="text"
-          class="form-control mt-4"
-          placeholder="enter country here"
-          ng-model="c"
-          ng-change="get_country_data()"
-        />
-        <!-- country data -->
-        <div class="container-fluid" ng-if="countryData">
-          <h1 class="text-center mt-4 text-uppercase">{{c}} status</h1>
-          <div class="row text-center text-white mt-4">
-            <div class="col-md-4">
-              <div class="card bg-warning mt-4">
-                <div class="card-body">
-                  <h3>Confirmed Cases</h3>
-                  <h3>{{countryData.confirmed.value}}</h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card bg-success mt-4">
-                <div class="card-body">
-                  <h3>Recovered Cases</h3>
-                  <h3>{{countryData.recovered.value}}</h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card bg-danger mt-4">
-                <div class="card-body">
-                  <h3>Death Cases</h3>
-                  <h3>{{countryData.deaths.value}}</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- country end data -->
       </div>
+    </section>
+
+    <!-- home page end  -->
+
+    <!-- about section  -->
+    <section class="bg-light" style="height: 100vh; display: flex; justify-content: center; flex-direction: column;">
+      <h1 class="text-uppercase text-center"> about covid-19</h1>
+      <div class="row px-auto mt-5">
+        <div class="col-lg-4 col-md-4 col-sm-12 mt-5 text-center">
+          <img src="./images/corona virus for about.jpg" class="img-fluid mt-3 mx-2">
+        </div>
+
+        <div class="col-lg-8 col-md-8 col-sm-12 mt-5">
+          <h3 >What is COVID-19 (Corona-Virus)</h3>
+          <p class="mt-5"> Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus. Most people infected with the COVID-19 virus will experience mild to moderate respiratory illness and recover without requiring special treatment. Older people, and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness. The best way to prevent and slow down transmission is be well informed about the COVID-19 virus, the disease it causes and how it spreads. Protect yourself and others from infection by washing your hands or using an alcohol based rub frequently and not touching your face. The COVID-19 virus spreads primarily through droplets of saliva or discharge from the nose when an infected person coughs or sneezes, so it’s important that you also practice respiratory etiquette (for example, by coughing into a flexed elbow). At this time, there are no specific vaccines or treatments for COVID-19. However, there are many ongoing clinical trials evaluating potential treatments. WHO will continue to provide updated information as soon as clinical findings become available. </p>
+        </div>
+
+        
+    </section>
+
+<!-- end of about section  -->
+
+<!-- Symptoms section  -->
+<section style="height: 100vh; display: flex; justify-content: center; flex-direction: column;">
+<h1 class="text-center mb-5"> CoronaVirus Symptoms</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 text-center mt-5">
+      <img src="./images/cough.svg" alt=" " class="img-fluid" height="100" width="100">
+      <p>cough</p>
     </div>
 
+    <div class="col-lg-4 col-md-4 col-sm-4 text-center mt-5">
+      <img src="./images/runny nose.png" alt=" " class="img-fluid" height="100" width="100">
+      <p>runny nose</p>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4 text-center mt-5">
+      <img src="./images/fever.png" alt=" " class="img-fluid" height="100" width="100">
+      <p>fever</p>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4 text-center mt-5">
+      <img src="./images/cold.png" alt=" " class="img-fluid" height="100" width="100">
+      <p>cold</p>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4 text-center mt-5">
+      <img src="./images/tiredness.png" alt=" " class="img-fluid" height="100" width="100">
+      <p>tiredness</p>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4 text-center mt-5">
+      <img src="./images/breathing problem new.png" alt=" " class="img-fluid" height="100" width="100">
+      <p>difficulty breathing (severe cases)</p>
+    </div>
+
+    
+    </div>
+    
+</div>
+</section>
+
+<!-- Symptoms end  -->
+
+<!-- prevention start  -->
+
+<section style="height: 100vh; display: flex; justify-content: center; flex-direction: column;">
+
+  <h1 class="text-center mb-5"> 6 steps prevention Against coronavirus</h1>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-bg-4 col-md-4 col-sm-12">
+        <div class="m-2 mt-3" style="display: flex;">
+            <img src="./images/wash hand new.png" alt="" width="100px" height="100px">
+            <p class="ml-3"> wash your hands regularly for 30 seconds, with soap and water or alcohol-based hand rub</p>
+        </div>
+      </div>
+      
+      <div class="col-bg-4 col-md-4 col-sm-12">
+        <div class="m-2 mt-3" style="display: flex;">
+            <img src="./images/face mask.png" alt="" width="100px" height="100px">
+            <p class="ml-3">cover your nose and mouth with a disposable tissue or flexed elbow when you cough or sneeze</p>
+          </div>
+      </div>
+      
+      <div class="col-bg-4 col-md-4 col-sm-12">
+        <div class="m-2 mt-3" style="display: flex;">
+            <img src="./images/social distance new.png" alt="" width="100px" height="100px">
+            <p class="ml-3">avoid close contact (1 meter or 3 feet) with people who are unwell</p>
+          </div>
+      </div>
+      
+      <div class="col-bg-4 col-md-4 col-sm-12">
+        <div class="m-2 mt-3" style="display: flex;">
+            <img src="./images/stay home.png" alt="" width="100px" height="100px">
+            <p class="ml-3">stay home and self isolate from others in the household if you feel unwell</p>
+          </div>
+      </div>
+      
+      <div class="col-bg-4 col-md-4 col-sm-12">
+        <div class="m-2 mt-3" style="display: flex;">
+            <img src="./images/watch news.png" alt="" width="100px" height="100px">
+            <p class="ml-3">stay informed by watching news & follow the recommended practices</p>
+          </div>
+      </div>
+      
+      <div class="col-bg-4 col-md-4 col-sm-12">
+        <div class="m-2 mt-3" style="display: flex;">
+            <img src="./images/prevention fever.svg" alt="" width="100px" height="100px">
+            <p class="ml-3">if you have fever, caugh and difficulty breathing. seek medical care early</p>
+          </div>
+      </div>
+      
+
+    </div>
+  </div>
+</section>
+
+
+<!-- form section -->
+<section >
+
+  <h1 style="text-transform: capitalize;" class="text-center">contact Us ASAP</h1>
+  <div class="container" style="text-transform: capitalize;">
+    <form action="/action_page.php">
+      <div class="form-group">
+        <label for="pwd">Username</label>
+        <input type="text" class="form-control" id="pwd">
+      </div>
+      <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+      </div>
+      <div class="form-group">
+        <label for="pwd">mobile</label>
+        <input type="text" class="form-control" id="pwd">
+      </div>
+      <label for="">select Symptoms</label>
+      <div class="d-flex">
+        <div class="checkbox ml-3 ">
+          <label><input type="checkbox"> cold</label>
+        </div>
+  
+        <div class="checkbox ml-3">
+          <label><input type="checkbox"> fever</label>
+        </div>
+  
+        <div class="checkbox ml-3">
+          <label><input type="checkbox"> difficulty in breathing</label>
+        </div>
+  
+        <div class="checkbox ml-3">
+          <label><input type="checkbox"> feeling weak</label>
+        </div>
+        
+      </div>
+      <div class="form-group">
+        <label for="comment">Describe how you are feeling</label>
+        <textarea class="form-control" rows="5" id="comment"></textarea>
+      </div> 
+      <button type="submit" class="btn btn-default bg-success text-white">Submit</button>
+    </form> 
+  </div>
+</section>
+<!-- end of form section  -->
+
+<h2 style="width: 100%; background-color: black; color: white; text-align: center; margin-top: 3rem;"> &copy; copyright suraj tiwari 2020</h2>
     <script src="./angular/angular.js"></script>
-    <script src="./javascript/script.js"></script>
+    <script src="./javascript/script.js"></script>  
   </body>
 </html>

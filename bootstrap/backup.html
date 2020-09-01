@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron py-3">
+        <!-- all data -->
+        <div class="row text-center text-white">
+          <div class="col-md-4">
+            <div class="card bg-warning mt-4">
+              <div class="card-body">
+                <h3>Confirmed Cases</h3>
+                <h3>{{allData.confirmed.value}}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-success mt-4">
+              <div class="card-body">
+                <h3>Recovered Cases</h3>
+                <h3>{{allData.recovered.value}}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-danger mt-4">
+              <div class="card-body">
+                <h3>Death Cases</h3>
+                <h3>{{allData.deaths.value}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- End all data -->
+
+        <input
+          type="text"
+          class="form-control mt-4"
+          placeholder="enter country here"
+          ng-model="c"
+          ng-change="get_country_data()"
+        />
+        <!-- country data -->
+        <div class="container-fluid" ng-if="countryData">
+          <h1 class="text-center mt-4 text-uppercase">{{c}} status</h1>
+          <div class="row text-center text-white mt-4">
+            <div class="col-md-4">
+              <div class="card bg-warning mt-4">
+                <div class="card-body">
+                  <h3>Confirmed Cases</h3>
+                  <h3>{{countryData.confirmed.value}}</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card bg-success mt-4">
+                <div class="card-body">
+                  <h3>Recovered Cases</h3>
+                  <h3>{{countryData.recovered.value}}</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card bg-danger mt-4">
+                <div class="card-body">
+                  <h3>Death Cases</h3>
+                  <h3>{{countryData.deaths.value}}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- country end data -->
+      </div>
+    </div>
+  </body>
+</html>
