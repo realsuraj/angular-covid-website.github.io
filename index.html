@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Covid Shower</title>
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-
+     -->
+     <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
      <link rel="stylesheet" href="./css/style.css">
   </head>
   <body ng-app="MyCovidApp" ng-controller="MyCtrl" style="overflow-x: hidden;">
@@ -78,7 +78,7 @@
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search for country" aria-label="Search"  ng-model="c" ng-change="get_country_data()"
             >
-            <button class="btn btn-outline-success bg-success text-white my-2 my-sm-0" type="submit" >Search</button>
+            <button class="btn btn-outline-success bg-success text-white my-2 my-sm-0" type="submit" ><a href="#update" class="nav-link text-white">Search</a></button>
           </form>
         </div>
       </nav>
@@ -97,15 +97,15 @@
           />
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 mt-5">
-          <h1 class=" mt-5">
+          <h1 class=" mt-5 coronah1">
             Let's Stay Safe & Fight Together Against Cor <span> <img src="./images/corona virus for p.webp" alt="" style="height: 60px; width: 60px;"></span> na Virus
           </h1>
         </div>
       </div>
     </section>
 
-    <section class="mt-1">
-      <h1 class="text-uppercase text-center text-danger"> covid-19 updates</h1>
+    <section class="mt-1" id="update">
+      <h1 class="text-uppercase text-center text-danger mt-4"> covid-19 updates</h1>
       <div class="row px-auto">
         <div class="col-lg-4 col-md-4 col-sm-12  text-center">
           <h3>  {{allData.confirmed.value}}</h3>
@@ -160,15 +160,17 @@
     <!-- about section  -->
     <section id="about" class="bg-light" style="height: 100vh; display: flex; justify-content: center; flex-direction: column;">
       <h1 class="text-uppercase text-center"> about covid-19</h1>
+     <div class="container-fluid p-5">
       <div class="row px-auto mt-5">
         <div class="col-lg-4 col-md-4 col-sm-12 mt-5 text-center">
-          <img src="./images/corona virus for about.jpg" class="img-fluid mt-3 mx-2">
+          <img src="./images/corona virus for about.jpg" class="img-fluid m-3">
         </div>
 
         <div class="col-lg-8 col-md-8 col-sm-12 mt-5">
           <h3 >What is COVID-19 (Corona-Virus)</h3>
-          <p class="mt-5"> Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus. Most people infected with the COVID-19 virus will experience mild to moderate respiratory illness and recover without requiring special treatment. Older people, and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness. The best way to prevent and slow down transmission is be well informed about the COVID-19 virus, the disease it causes and how it spreads. Protect yourself and others from infection by washing your hands or using an alcohol based rub frequently and not touching your face. The COVID-19 virus spreads primarily through droplets of saliva or discharge from the nose when an infected person coughs or sneezes, so it’s important that you also practice respiratory etiquette (for example, by coughing into a flexed elbow). At this time, there are no specific vaccines or treatments for COVID-19. However, there are many ongoing clinical trials evaluating potential treatments. WHO will continue to provide updated information as soon as clinical findings become available. </p>
+          <p class="mt-5 aboutcoronavp text-justify m-2"> Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus. Most people infected with the COVID-19 virus will experience mild to moderate respiratory illness and recover without requiring special treatment. Older people, and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness. The best way to prevent and slow down transmission is be well informed about the COVID-19 virus, the disease it causes and how it spreads. Protect yourself and others from infection by washing your hands or using an alcohol based rub frequently and not touching your face. The COVID-19 virus spreads primarily through droplets of saliva or discharge from the nose when an infected person coughs or sneezes, so it’s important that you also practice respiratory etiquette (for example, by coughing into a flexed elbow). At this time, there are no specific vaccines or treatments for COVID-19. However, there are many ongoing clinical trials evaluating potential treatments. WHO will continue to provide updated information as soon as clinical findings become available. </p>
         </div>
+     </div>
 
         
     </section>
